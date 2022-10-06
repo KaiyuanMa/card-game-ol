@@ -1,0 +1,559 @@
+@font-face {
+  font-family: "friz_quadrata";
+  src: url("fonts/friz_quadrata/friz_quadrata_bold-webfont.woff2")
+      format("woff2"),
+    url("fonts/friz_quadrata/friz_quadrata_bold-webfont.woff") format("woff");
+  font-weight: bold;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: "friz_quadrata";
+  src: url("fonts/friz_quadrata/friz_quadrata_italic-webfont.woff2")
+      format("woff2"),
+    url("fonts/friz_quadrata/friz_quadrata_italic-webfont.woff") format("woff");
+  font-weight: normal;
+  font-style: italic;
+}
+
+@font-face {
+  font-family: "friz_quadrata_reg";
+  src: url("fonts/friz_quadrata/friz_quadrata_regular-webfont.woff2")
+      format("woff2"),
+    url("fonts/friz_quadrata/friz_quadrata_regular-webfont.woff") format("woff");
+  font-weight: normal;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: "friz_quadrata";
+  src: url("fonts/friz_quadrata/friz_quadrata_std_medium-webfont.woff2")
+      format("woff2"),
+    url("fonts/friz_quadrata/friz_quadrata_std_medium-webfont.woff")
+      format("woff");
+  font-weight: normal;
+  font-style: normal;
+}
+
+html,
+body {
+  height: 100%;
+  width: 100%;
+  margin: 0;
+  padding: 0;
+  font-family: "friz_quadrata";
+}
+
+button {
+  background-color: #202327;
+  font-family: "friz_quadrata";
+  color: #c8aa6e;
+  border: 1px solid #a09b8c;
+}
+
+button:hover {
+  cursor: pointer;
+  color: #f0e6d2;
+}
+
+.icon {
+  color: #c89b3c;
+}
+
+#root {
+  height: 100%;
+  width: 100%;
+}
+
+.app {
+  height: 100%;
+  width: 100%;
+  display: flex;
+  position: relative;
+}
+
+.middle-content {
+  width: 100%;
+  background-color: #f0e6d2;
+  display: flex;
+  flex-direction: column;
+}
+
+.page-wrapper {
+  height: 100%;
+}
+
+.right-side-bar {
+  background-color: #091428;
+  color: #f0e6d2;
+  height: 100%;
+  width: 20%;
+}
+
+.page-outlet {
+  order: 2;
+}
+
+.game {
+  height: 100%;
+  width: 100%;
+  /* border: 1px solid black; */
+}
+
+.fullscreen {
+  width: 100%;
+}
+
+.center {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.board {
+  height: 100%;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+}
+
+.board-half {
+  height: 50%;
+  border: 1px solid black;
+  display: flex;
+}
+
+.card {
+  height: 20rem;
+  width: 10rem;
+  border: 1px solid black;
+}
+
+/* UserBar */
+
+.user-tools {
+  margin-top: 1rem;
+  width: 100%;
+  height: auto;
+  display: flex;
+}
+
+/* -------------- */
+.slider {
+  width: 100%;
+  height: 80%;
+  position: relative;
+  overflow: hidden;
+}
+
+.slide:nth-child(2) {
+  transform: translateX(100%);
+}
+
+.slide:nth-child(3) {
+  transform: translateX(200%);
+}
+
+.slide {
+  width: 100%;
+  height: 100%;
+  position: absolute;
+  object-fit: cover;
+  transition: all 0.5s;
+  box-sizing: border-box;
+  background-color: #a09b8c;
+  padding: 1px;
+  clip-path: polygon(0 0, 85% 0, 100% 5%, 100% 100%, 15% 100%, 0 95%);
+}
+
+.polygon-border {
+  height: 100%;
+  width: 100%;
+  background-color: #091428;
+  clip-path: polygon(0 0, 85% 0, 100% 5%, 100% 100%, 15% 100%, 0 95%);
+}
+
+.user-bar {
+  height: 100%;
+  margin-left: 10px;
+  margin-right: 10px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.friend-list {
+  display: flex;
+  flex-direction: column;
+}
+
+/* FriendListItem */
+
+.friend-list-item {
+  padding-left: 10px;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  width: 100%;
+  padding-top: 2px;
+  padding-bottom: 2px;
+}
+
+.friend-list-item-click:hover {
+  background-color: #32281e;
+  cursor: pointer;
+}
+
+.friend-username-unread {
+  color: #c89b3c;
+  text-shadow: #c89b3c 0px 0px 20px;
+  transition-duration: 0.5s;
+}
+
+.friend-icon {
+  height: 40px;
+  width: 40px;
+  border-radius: 50%;
+  border: 2px solid #785a28;
+}
+
+.friend-status {
+  position: absolute;
+  height: 12px;
+  width: 12px;
+  bottom: 0;
+  right: 2px;
+  border-radius: 50%;
+  z-index: 1;
+  border: 1px solid black;
+}
+
+.online {
+  background-color: green;
+}
+
+.offline {
+  background-color: grey;
+}
+
+.user-wrapper {
+  display: flex;
+  flex-direction: column;
+  height: auto;
+  width: 100%;
+  margin-top: 5px;
+  margin-bottom: 10px;
+}
+
+.user-content-wrapper {
+  display: flex;
+}
+
+.user-menu {
+  display: flex;
+  flex-direction: row-reverse;
+  gap: 10px;
+}
+
+.icon:hover {
+  cursor: pointer;
+  color: #f0e6d2;
+}
+
+.icon-wrapper {
+  display: flex;
+  height: fit-content;
+  width: fit-content;
+  position: relative;
+}
+
+.user-icon {
+  height: 50px;
+  width: 50px;
+  border-radius: 50%;
+  border: 2px solid #c89b3c;
+  cursor: pointer;
+}
+
+.user-status {
+  position: absolute;
+  bottom: 0px;
+  right: 2px;
+  width: 12px;
+  height: 12px;
+  border: 1px solid black;
+  background-color: green;
+  border-radius: 50%;
+}
+
+.user-username {
+  font-size: large;
+  margin-left: 10px;
+}
+
+.hide-friend-btn {
+  height: 2rem;
+}
+
+/* Login */
+
+.login-form {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  margin-left: 1rem;
+  margin-right: 1rem;
+}
+
+/* UserSetting */
+
+.user-setting {
+}
+
+/* AddFriend */
+
+.add-friend {
+}
+
+/* NavBar */
+.nav-bar {
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+  width: 100%;
+  align-items: center;
+}
+
+.nav-bar a {
+  text-decoration: none;
+  font-size: 1.5rem;
+  font-weight: 800;
+  font-style: italic;
+  color: #c8aa6e;
+}
+
+/* LeftSideBar */
+.left-side-bar {
+  display: flex;
+  flex-direction: column;
+  background-color: #091428;
+  color: #f0e6d2;
+  height: 100%;
+  width: 18%;
+}
+
+.logo {
+}
+
+/* HowToPlay */
+.how-to-play-wrapper {
+  font-size: 3rem;
+  font-weight: 900;
+  font-style: italic;
+}
+
+/* ChatBox */
+
+.chat-btn {
+  height: 2rem;
+  width: 2rem;
+}
+
+.chat-box {
+  display: flex;
+  flex-direction: column;
+  box-sizing: border-box;
+  position: absolute;
+  height: 25rem;
+  width: 0rem;
+  background-color: #091428;
+  right: 14.5%;
+  bottom: 0;
+  overflow: hidden;
+  transition-duration: 0.3s;
+}
+
+.chat-form {
+  display: flex;
+  width: 100%;
+}
+
+.chat-form input {
+  margin-left: 5px;
+  width: 21rem;
+  height: 1rem;
+}
+
+.chat-form button {
+  margin-left: 3px;
+}
+
+.chat-content {
+  width: 100%;
+  height: 93%;
+}
+
+.chat-messages {
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
+  max-height: 18rem;
+  overflow-y: auto;
+  scrollbar-gutter: stable;
+}
+
+.chat-messages::-webkit-scrollbar {
+  width: 0.3vw;
+}
+
+.chat-messages::-webkit-scrollbar-thumb {
+  background-color: #785a28;
+
+  border-radius: 10px;
+}
+
+.message {
+  width: fit-content;
+  max-width: 18rem;
+  position: relative;
+  height: fit-content;
+  overflow-wrap: break-word;
+  padding: 8px;
+  border-radius: 5px;
+}
+
+.user-message {
+  align-self: end;
+  margin-right: 10px;
+  background-color: #785a28;
+  color: #f0e6d2;
+}
+
+.guest-message {
+  align-self: start;
+  margin-left: 10px;
+  background-color: #5b5a56;
+  color: #f0e6d2;
+}
+
+.message-corner {
+  position: absolute;
+  clip-path: polygon(0 0, 0 30%, 100% 0);
+}
+
+.user-message-corner {
+  background-color: #785a28;
+  top: 0px;
+  right: -8px;
+  width: 1rem;
+  height: 2rem;
+}
+
+.guest-message-corner {
+  transform: rotateY(200deg);
+  background-color: #5b5a56;
+  top: 0px;
+  left: -8px;
+  width: 1rem;
+  height: 2rem;
+}
+
+/* PopUp */
+
+.PopUpWrapper {
+  width: 100%;
+  height: 100%;
+  position: absolute;
+  top: 0;
+  z-index: 1;
+  display: none;
+  align-items: center;
+  justify-content: center;
+}
+
+/* IconPopUp */
+.icon_popUp {
+  display: flex;
+  background-color: #091428;
+  border: 2px solid #c89b3c;
+  position: relative;
+  width: 50rem;
+  height: 20rem;
+}
+
+.icon_form {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+}
+
+.icon_form_list {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: center;
+  margin-left: 2rem;
+  margin-right: 2rem;
+  margin-top: 2rem;
+  gap: 4rem;
+}
+
+.icon_form_list input {
+  display: none;
+}
+
+.icon-input:checked + .icon-label img {
+  border: 2px solid #c89b3c;
+}
+
+.icon-radio {
+  width: 4.5rem;
+  height: 4.5rem;
+  border: 2px solid #785a28;
+  border-radius: 50%;
+}
+
+.icon_popUp_close {
+  position: absolute;
+  top: 0.5rem;
+  right: 0.5rem;
+}
+
+/* LogInPopUp */
+
+.login-popUp {
+  width: 20rem;
+  height: 10rem;
+  background-color: #091428;
+  border: 2px solid #c89b3c;
+  color: #c8aa6e;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+}
+
+.login-popUp button {
+  position: absolute;
+  top: 0.5rem;
+  right: 0.5rem;
+}
+
+/* AddFriend */
+.add-friend-form {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+.add-list-item {
+  display: flex;
+  gap: 10px;
+  align-items: center;
+  justify-content: flex-start;
+}
