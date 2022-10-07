@@ -166,13 +166,6 @@ button:hover {
   clip-path: polygon(0 0, 85% 0, 100% 5%, 100% 100%, 15% 100%, 0 95%);
 }
 
-.polygon-border {
-  height: 100%;
-  width: 100%;
-  background-color: #091428;
-  clip-path: polygon(0 0, 85% 0, 100% 5%, 100% 100%, 15% 100%, 0 95%);
-}
-
 .user-bar {
   height: 100%;
   margin-left: 10px;
@@ -182,9 +175,37 @@ button:hover {
   align-items: center;
 }
 
+/* FriendList */
+
+.polygon-border {
+  height: 100%;
+  width: 100%;
+  background-color: #091428;
+  clip-path: polygon(0 0, 85% 0, 100% 5%, 100% 100%, 15% 100%, 0 95%);
+}
+
 .friend-list {
   display: flex;
   flex-direction: column;
+}
+
+.game-request {
+  transition-duration: 0.2s;
+  width: 100%;
+  height: 5rem;
+  background-color: #c89b3c;
+  display: flex;
+  flex-direction: column;
+}
+
+.game-request-header {
+  font-size: medium;
+}
+
+.game-request-content {
+  display: flex;
+  height: 90%;
+  align-items: center;
 }
 
 /* FriendListItem */

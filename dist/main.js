@@ -2800,12 +2800,14 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */ });
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);
-/* harmony import */ var react_router_dom__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! react-router-dom */ "./node_modules/react-router/index.js");
+/* harmony import */ var react_router_dom__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! react-router-dom */ "./node_modules/react-router/index.js");
 /* harmony import */ var _Home__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./Home */ "./src/components/MiddleContent.js/Home.js");
 /* harmony import */ var _RightSideBar_Login__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../RightSideBar/Login */ "./src/components/RightSideBar/Login.js");
 /* harmony import */ var _HowToPlay__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./HowToPlay */ "./src/components/MiddleContent.js/HowToPlay.js");
 /* harmony import */ var _Game__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ./Game */ "./src/components/MiddleContent.js/Game.js");
-/* harmony import */ var framer_motion__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! framer-motion */ "./node_modules/framer-motion/dist/es/components/AnimatePresence/index.mjs");
+/* harmony import */ var _InGame__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ./InGame */ "./src/components/MiddleContent.js/InGame.js");
+/* harmony import */ var framer_motion__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! framer-motion */ "./node_modules/framer-motion/dist/es/components/AnimatePresence/index.mjs");
+
 
 
 
@@ -2815,24 +2817,27 @@ __webpack_require__.r(__webpack_exports__);
 
 
 function AnimatedRoutes() {
-  const location = (0,react_router_dom__WEBPACK_IMPORTED_MODULE_5__.useLocation)();
-  return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(framer_motion__WEBPACK_IMPORTED_MODULE_6__.AnimatePresence, {
+  const location = (0,react_router_dom__WEBPACK_IMPORTED_MODULE_6__.useLocation)();
+  return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(framer_motion__WEBPACK_IMPORTED_MODULE_7__.AnimatePresence, {
     exitBeforeEnter: true
-  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_5__.Routes, {
+  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_6__.Routes, {
     location: location,
     key: location.pathname
-  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_5__.Route, {
+  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_6__.Route, {
     path: "/",
     element: /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(_Home__WEBPACK_IMPORTED_MODULE_1__["default"], null)
-  }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_5__.Route, {
+  }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_6__.Route, {
     path: "/login",
     element: /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(_RightSideBar_Login__WEBPACK_IMPORTED_MODULE_2__["default"], null)
-  }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_5__.Route, {
+  }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_6__.Route, {
     path: "/howToPlay",
     element: /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(_HowToPlay__WEBPACK_IMPORTED_MODULE_3__["default"], null)
-  }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_5__.Route, {
+  }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_6__.Route, {
     path: "/game",
     element: /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(_Game__WEBPACK_IMPORTED_MODULE_4__["default"], null)
+  }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_6__.Route, {
+    path: "/game/inGame",
+    element: /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(_InGame__WEBPACK_IMPORTED_MODULE_5__["default"], null)
   })));
 }
 
@@ -2905,13 +2910,135 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */ });
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);
+/* harmony import */ var react_redux__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! react-redux */ "./node_modules/react-redux/es/index.js");
+/* harmony import */ var react_router_dom__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! react-router-dom */ "./node_modules/react-router/index.js");
+/* harmony import */ var _socket__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../../socket */ "./src/socket.js");
+
+
+
+
+
+function Game() {
+  const dispatch = (0,react_redux__WEBPACK_IMPORTED_MODULE_1__.useDispatch)();
+  const {
+    auth
+  } = (0,react_redux__WEBPACK_IMPORTED_MODULE_1__.useSelector)(state => state.auth);
+  const {
+    inGameWith
+  } = (0,react_redux__WEBPACK_IMPORTED_MODULE_1__.useSelector)(state => state.inGameWith);
+  const {
+    friends
+  } = (0,react_redux__WEBPACK_IMPORTED_MODULE_1__.useSelector)(state => state.friends);
+
+  const sendGameRequest = friendId => {
+    console.log(auth.id, friendId);
+    _socket__WEBPACK_IMPORTED_MODULE_2__["default"].emit("gameRequest", auth.id, friendId, auth.username);
+  };
+
+  return inGameWith ? /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_3__.Navigate, {
+    to: "/inGame"
+  }) : auth.id ? /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("div", null, friends.map(friend => {
+    if (friend.isOnline) return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("div", null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("div", null, friend.username), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("button", {
+      onClick: () => sendGameRequest(friend.friendId)
+    }, "Invite"));else return null;
+  })) : /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("div", null);
+}
+
+/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (Game);
+
+/***/ }),
+
+/***/ "./src/components/MiddleContent.js/Home.js":
+/*!*************************************************!*\
+  !*** ./src/components/MiddleContent.js/Home.js ***!
+  \*************************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
+/* harmony export */ });
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);
+/* harmony import */ var framer_motion__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! framer-motion */ "./node_modules/framer-motion/dist/es/render/dom/motion.mjs");
+
+
+
+function Home() {
+  return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(framer_motion__WEBPACK_IMPORTED_MODULE_1__.motion.div, {
+    initial: {
+      opacity: 0
+    },
+    animate: {
+      opacity: 1
+    },
+    exit: {
+      opacity: 0
+    },
+    className: "fullscreen"
+  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("h1", null, "Home"));
+}
+
+/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (Home);
+
+/***/ }),
+
+/***/ "./src/components/MiddleContent.js/HowToPlay.js":
+/*!******************************************************!*\
+  !*** ./src/components/MiddleContent.js/HowToPlay.js ***!
+  \******************************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
+/* harmony export */ });
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);
+/* harmony import */ var framer_motion__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! framer-motion */ "./node_modules/framer-motion/dist/es/render/dom/motion.mjs");
+
+
+
+function HowToPlay() {
+  return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(framer_motion__WEBPACK_IMPORTED_MODULE_1__.motion.div, {
+    initial: {
+      opacity: 0
+    },
+    animate: {
+      opacity: 1
+    },
+    exit: {
+      opacity: 0
+    },
+    className: "fullscreen how-to-play-wrapper"
+  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("h1", null, "HOW TO PLAY"));
+}
+
+/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (HowToPlay);
+
+/***/ }),
+
+/***/ "./src/components/MiddleContent.js/InGame.js":
+/*!***************************************************!*\
+  !*** ./src/components/MiddleContent.js/InGame.js ***!
+  \***************************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
+/* harmony export */ });
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);
 /* harmony import */ var socket_io_client__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! socket.io-client */ "./node_modules/socket.io-client/build/esm/index.js");
 /* harmony import */ var react_redux__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! react-redux */ "./node_modules/react-redux/es/index.js");
 /* harmony import */ var _Card__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./Card */ "./src/components/MiddleContent.js/Card.js");
 /* harmony import */ var _state_actionCreators_cardAC__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ../../state/actionCreators/cardAC */ "./src/state/actionCreators/cardAC.js");
 /* harmony import */ var _state_actionCreators_opCardAC__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ../../state/actionCreators/opCardAC */ "./src/state/actionCreators/opCardAC.js");
 /* harmony import */ var framer_motion__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! framer-motion */ "./node_modules/framer-motion/dist/es/render/dom/motion.mjs");
-
 
 
 const ENDPOINT = "http://localhost:3000/";
@@ -2922,7 +3049,7 @@ const socket = (0,socket_io_client__WEBPACK_IMPORTED_MODULE_1__["default"])(ENDP
 
 
 
-function Game() {
+function InGame() {
   const dispatch = (0,react_redux__WEBPACK_IMPORTED_MODULE_2__.useDispatch)();
   const [confirm, setConfirm] = (0,react__WEBPACK_IMPORTED_MODULE_0__.useState)(false);
   const {
@@ -3084,79 +3211,7 @@ function Game() {
   }, "Confirm"))));
 }
 
-/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (Game);
-
-/***/ }),
-
-/***/ "./src/components/MiddleContent.js/Home.js":
-/*!*************************************************!*\
-  !*** ./src/components/MiddleContent.js/Home.js ***!
-  \*************************************************/
-/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
-
-"use strict";
-__webpack_require__.r(__webpack_exports__);
-/* harmony export */ __webpack_require__.d(__webpack_exports__, {
-/* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
-/* harmony export */ });
-/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
-/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);
-/* harmony import */ var framer_motion__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! framer-motion */ "./node_modules/framer-motion/dist/es/render/dom/motion.mjs");
-
-
-
-function Home() {
-  return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(framer_motion__WEBPACK_IMPORTED_MODULE_1__.motion.div, {
-    initial: {
-      opacity: 0
-    },
-    animate: {
-      opacity: 1
-    },
-    exit: {
-      opacity: 0
-    },
-    className: "fullscreen"
-  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("h1", null, "Home"));
-}
-
-/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (Home);
-
-/***/ }),
-
-/***/ "./src/components/MiddleContent.js/HowToPlay.js":
-/*!******************************************************!*\
-  !*** ./src/components/MiddleContent.js/HowToPlay.js ***!
-  \******************************************************/
-/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
-
-"use strict";
-__webpack_require__.r(__webpack_exports__);
-/* harmony export */ __webpack_require__.d(__webpack_exports__, {
-/* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
-/* harmony export */ });
-/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
-/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);
-/* harmony import */ var framer_motion__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! framer-motion */ "./node_modules/framer-motion/dist/es/render/dom/motion.mjs");
-
-
-
-function HowToPlay() {
-  return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(framer_motion__WEBPACK_IMPORTED_MODULE_1__.motion.div, {
-    initial: {
-      opacity: 0
-    },
-    animate: {
-      opacity: 1
-    },
-    exit: {
-      opacity: 0
-    },
-    className: "fullscreen how-to-play-wrapper"
-  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("h1", null, "HOW TO PLAY"));
-}
-
-/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (HowToPlay);
+/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (InGame);
 
 /***/ }),
 
@@ -3782,6 +3837,7 @@ function FriendList() {
   const {
     friends
   } = (0,react_redux__WEBPACK_IMPORTED_MODULE_3__.useSelector)(state => state.friends);
+  const [gameRequest, setGameRequest] = (0,react__WEBPACK_IMPORTED_MODULE_0__.useState)({});
   (0,react__WEBPACK_IMPORTED_MODULE_0__.useEffect)(() => {
     if (auth.id) {
       dispatch((0,_state_actionCreators_friendsAC__WEBPACK_IMPORTED_MODULE_2__.setFriends)());
@@ -3795,13 +3851,31 @@ function FriendList() {
     _socket__WEBPACK_IMPORTED_MODULE_1__["default"].on("getOnlineResponse", userId => {
       dispatch((0,_state_actionCreators_friendsAC__WEBPACK_IMPORTED_MODULE_2__.setStatus)(userId, true));
     });
+    _socket__WEBPACK_IMPORTED_MODULE_1__["default"].on("receiveGameRequest", (userId, username) => {
+      setGameRequest({
+        userId: userId,
+        username: username
+      });
+    });
   }, [_socket__WEBPACK_IMPORTED_MODULE_1__["default"]]);
-  return friends.length > 0 ? /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("div", {
+
+  const acceptRequest = () => {};
+
+  console.log(gameRequest);
+  return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("div", {
     className: "friend-list polygon-border"
-  }, friends.map(friend => /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(_FriendListItem__WEBPACK_IMPORTED_MODULE_4__["default"], {
+  }, gameRequest.userId ? /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("div", {
+    className: "game-request"
+  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("div", {
+    className: "game-request-header"
+  }, "Game Request"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("div", {
+    className: "game-request-content"
+  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("div", null, gameRequest.username), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("button", null, "V"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("button", {
+    onClick: () => setGameRequest({})
+  }, "X"))) : null, friends.map(friend => /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(_FriendListItem__WEBPACK_IMPORTED_MODULE_4__["default"], {
     friend: friend,
     isClick: true
-  }))) : null;
+  })));
 }
 
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (FriendList);
@@ -3927,7 +4001,6 @@ function Login() {
   (0,react__WEBPACK_IMPORTED_MODULE_0__.useEffect)(() => {
     if (auth.id) {
       onlineSetup();
-      console.log("on Client");
     }
   }, [auth]);
 
@@ -4651,6 +4724,40 @@ const reducer = (state = {
 
 /***/ }),
 
+/***/ "./src/state/reducer/inGameWithReducer.js":
+/*!************************************************!*\
+  !*** ./src/state/reducer/inGameWithReducer.js ***!
+  \************************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
+/* harmony export */ });
+const reducer = (state = {
+  InGameWith: ""
+}, action) => {
+  switch (action.type) {
+    case "SET_IN_GAME_WITH":
+      return { ...state,
+        InGameWith: action.InGameWith
+      };
+
+    case "EMPTY_IN_GAME_WITH":
+      return { ...state,
+        InGameWith: ""
+      };
+
+    default:
+      return state;
+  }
+};
+
+/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (reducer);
+
+/***/ }),
+
 /***/ "./src/state/reducer/index.js":
 /*!************************************!*\
   !*** ./src/state/reducer/index.js ***!
@@ -4662,7 +4769,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */ __webpack_require__.d(__webpack_exports__, {
 /* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
 /* harmony export */ });
-/* harmony import */ var redux__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! redux */ "./node_modules/redux/es/redux.js");
+/* harmony import */ var redux__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! redux */ "./node_modules/redux/es/redux.js");
 /* harmony import */ var _cardReducer__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./cardReducer */ "./src/state/reducer/cardReducer.js");
 /* harmony import */ var _opCardReducer__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./opCardReducer */ "./src/state/reducer/opCardReducer.js");
 /* harmony import */ var _authReducer__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./authReducer */ "./src/state/reducer/authReducer.js");
@@ -4670,6 +4777,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _unreadMessagesReducer__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ./unreadMessagesReducer */ "./src/state/reducer/unreadMessagesReducer.js");
 /* harmony import */ var _chatFriendReducer__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ./chatFriendReducer */ "./src/state/reducer/chatFriendReducer.js");
 /* harmony import */ var _popReducer__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! ./popReducer */ "./src/state/reducer/popReducer.js");
+/* harmony import */ var _inGameWithReducer__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! ./inGameWithReducer */ "./src/state/reducer/inGameWithReducer.js");
 
 
 
@@ -4678,14 +4786,16 @@ __webpack_require__.r(__webpack_exports__);
 
 
 
-const reducers = (0,redux__WEBPACK_IMPORTED_MODULE_7__.combineReducers)({
+
+const reducers = (0,redux__WEBPACK_IMPORTED_MODULE_8__.combineReducers)({
   card: _cardReducer__WEBPACK_IMPORTED_MODULE_0__["default"],
   opCard: _opCardReducer__WEBPACK_IMPORTED_MODULE_1__["default"],
   auth: _authReducer__WEBPACK_IMPORTED_MODULE_2__["default"],
   friends: _friendsReducer__WEBPACK_IMPORTED_MODULE_3__["default"],
   unreadMessages: _unreadMessagesReducer__WEBPACK_IMPORTED_MODULE_4__["default"],
   chatFriend: _chatFriendReducer__WEBPACK_IMPORTED_MODULE_5__["default"],
-  popUp: _popReducer__WEBPACK_IMPORTED_MODULE_6__["default"]
+  popUp: _popReducer__WEBPACK_IMPORTED_MODULE_6__["default"],
+  inGameWith: _inGameWithReducer__WEBPACK_IMPORTED_MODULE_7__["default"]
 });
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (reducers);
 

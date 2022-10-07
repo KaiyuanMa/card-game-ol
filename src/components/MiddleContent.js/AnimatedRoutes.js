@@ -4,6 +4,7 @@ import Home from "./Home";
 import Login from "../RightSideBar/Login";
 import HowToPlay from "./HowToPlay";
 import Game from "./Game";
+import InGame from "./InGame";
 import { AnimatePresence } from "framer-motion";
 
 function AnimatedRoutes() {
@@ -16,6 +17,7 @@ function AnimatedRoutes() {
         <Route path="/login" element={<Login />} />
         <Route path="/howToPlay" element={<HowToPlay />} />
         <Route path="/game" element={<Game />} />
+        <Route path="/game/inGame" element={<InGame />} />
       </Routes>
     </AnimatePresence>
   );

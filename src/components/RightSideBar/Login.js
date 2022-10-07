@@ -19,7 +19,6 @@ function Login() {
   useEffect(() => {
     if (auth.id) {
       onlineSetup();
-      console.log("on Client");
     }
   }, [auth]);
 

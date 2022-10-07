@@ -58,6 +58,17 @@ io.on("connection", (socket) => {
         );
       }
     });
+    socket.on("gameRequest", (userId, friendId, username) => {
+      console.log(socketMap);
+      if (socketMap.get(friendId)) {
+        console.log("sending");
+        io.to(socketMap.get(friendId)).emit(
+          "receiveGameRequest",
+          userId,
+          username
+        );
+      }
+    });
     socket.on("logOut", () => {
       logoutEvent(socket);
     });
